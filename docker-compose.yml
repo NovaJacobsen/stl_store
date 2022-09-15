@@ -1,0 +1,9 @@
+services:
+  stl-store:
+    image: stl-store
+    container_name: stl-store
+    command: "unicorn -c /app/config/unicorn.rb"
+    build:
+      context: .
+    ports:
+      - 8080:80

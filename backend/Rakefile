@@ -1,0 +1,17 @@
+def load_env
+  require "./config/environment"
+end
+
+desc "Open an irb/pry session"
+
+task :console do
+  ENV["APP_KIND"] = "console"
+  load_env
+  require "irb"
+
+  Dir.glob("lib/std-store/**/*.rb").sort.each { |file| require file }
+
+  ARGV.clear
+  IRB.start
+end
+

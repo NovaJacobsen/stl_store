@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+pre=$(echo $@ | awk -F " -- " '{print $1}')
+post=$(echo $@ | awk -F " -- " '{print $2}')
+docker compose build && docker compose run $post stl-store $pre
